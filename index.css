@@ -1,47 +1,110 @@
-body {
-    margin: 0;
-    font-family: 'Smythe', system-ui;
+:root {
+    --main-green: #16db99;
+    --dark-green: #065f46;
+    --light-green-bg: #ecfdf5;
+    --border-gray: #ccc;
+    --text-font: 'Smythe', system-ui;
 }
 
+/* Reset et style global */
+body {
+    margin: 0;
+    font-family: var(--text-font);
+}
+
+img,
+button,
+input {
+    display: block;
+}
+
+/* Header */
 .header-img {
     width: 100%;
 }
 
-.item-section {
+/* Sections générales */
+.item-section,
+.order-items,
+.total-container {
     display: flex;
+    align-items: center;
+}
+
+.item-section {
     margin: 0 45px;
     justify-content: center;
-    align-items: center;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid var(--border-gray);
+}
+
+.item-info,
+.complete-order-section {
+    padding: 30px;
+    margin: 0 45px;
+}
+
+/* Texte, prix et image */
+.price {
+    font-weight: bold;
+    margin-left: auto;
+}
+
+.name-item,
+.total-el {
+    font-size: 1.2rem;
 }
 
 .item-img {
     font-size: 400%;
 }
 
-.item-info {
-    padding: 30px;
-}
-
-.price {
-    font-weight: bold;
-}
-
-.add-btn {
-    background-color: white;
-    border: 1px solid #ccc;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    margin: auto 0 auto auto;
+/* Boutons */
+button {
     cursor: pointer;
 }
 
-.complete-order-section{
-    margin: 0 45px;
+.add-btn,
+#pay-btn {
+    border: 1px solid var(--border-gray);
+    border-radius: 50%;
+    background-color: white;
 }
 
-#order-container{
+.add-btn {
+    width: 50px;
+    height: 50px;
+    margin-left: auto;
+}
+
+.remove-btn {
+    border: none;
+    background: none;
+    color: var(--border-gray);
+    padding-left: 10px;
+}
+
+/* Boutons principaux */
+.complete-order-btn,
+#pay-btn {
+    width: 100%;
+    background-color: var(--main-green);
+    border: none;
+    color: white;
+    font-weight: bold;
+}
+
+.complete-order-btn {
+    padding: 20px;
+}
+
+#pay-btn {
+    padding: 12px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+/* Commande */
+#order-container {
     display: none;
 }
 
@@ -49,36 +112,93 @@ body {
     text-align: center;
 }
 
-.name-item, .total-el {
-    font-size: 1.2rem;
-}
-
-.remove-btn {
-    border: none;
-    background: white;
-    color: #ccc;
-    padding-left: 10px;
-    cursor: pointer;
-}
-
-.order-items, .item {
+#order-items {
     display: flex;
+    flex-direction: column;
+    gap: 4px;
 }
 
-.price {
-    margin-left: auto;
+.order-items {
+    justify-content: space-between;
+    width: 100%;
 }
 
 .total-container {
-    display: flex;
     border-top: 2px solid #333;
 }
 
-.complete-order-btn {
-    width: 100%;
-    background-color: #16db99;
-    border: none;
-    padding: 20px;
-    color: white;
-    font-weight: bold;
+/* Pop-up paiement */
+.payment-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+.payment-content {
+    background: white;
+    padding: 30px;
+    width: 320px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.payment-content h2 {
+    margin-bottom: 20px;
+}
+
+#payment-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 15px;
+}
+
+.payment-content input {
+    padding: 12px;
+    border: 1px solid var(--border-gray);
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+/* Messages */
+.thank-you {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--light-green-bg);
+    border-radius: 10px;
+    width: 80%;
+    margin: 20px auto;
+    color: var(--dark-green);
+}
+
+.discount-msg {
+    color: #16db99;
+    font-size: 0.9rem;
+    font-style: italic;
+    margin-right: auto;
+}
+
+/* Rating */
+.rating {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.star {
+    font-size: 2rem;
+    color: #ccc;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.star.active {
+    color: gold;
+}
+
+
